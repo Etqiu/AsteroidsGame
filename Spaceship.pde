@@ -24,13 +24,13 @@ class Spaceship extends Floater{
  public void hyperspace(){
    
    if(millis()-time>2000){
-     background(255);
+     
    myCenterX = (int)(Math.random()*500);
   myCenterY = (int)(Math.random()*500);
   myXspeed =0;
   myYspeed =0;
   time = millis();
-  background(0);
+
 }
 }
 }
