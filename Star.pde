@@ -1,8 +1,8 @@
 class Star{
-  float positionX, positionY;
-  float mySize;
-  int myColor;
-   float time;
+  private float positionX, positionY;
+  private float mySize;
+  private int myColor;
+  private float time;
   Star(){
     positionX = (float)(Math.random()*500);
     positionY = (float)(Math.random()*500);
