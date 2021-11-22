@@ -1,6 +1,6 @@
 class Spaceship extends Floater{
   public boolean hyperspace;
-  float time;
+  private float time;
   public Spaceship(){
   myColor = (255);
   corners = 3;
@@ -29,6 +29,7 @@ class Spaceship extends Floater{
   myCenterY = (int)(Math.random()*500);
   myXspeed =0;
   myYspeed =0;
+  myPointDirection =(int)(Math.random()*360);
   time = millis();
 
 }
