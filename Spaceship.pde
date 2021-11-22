@@ -1,5 +1,4 @@
 class Spaceship extends Floater{
-  public boolean hyperspace;
   private float time;
   public Spaceship(){
   myColor = (255);
@@ -17,7 +16,6 @@ class Spaceship extends Floater{
   myXspeed =0;
   myYspeed =0;
   myPointDirection =90;
-  hyperspace = false;
   time = 0;
   
 }
