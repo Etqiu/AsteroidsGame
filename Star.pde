@@ -3,7 +3,7 @@ class Star{
   private float mySize;
   private int myColor;
   private float time;
-  Star(){
+  public Star(){
     positionX = (float)(Math.random()*500);
     positionY = (float)(Math.random()*500);
     mySize = 2;
@@ -11,14 +11,14 @@ class Star{
     time = 0;
   }
   
-  void blink(){
+  public void blink(){
     fill(0);
   }
-  void show(){
+  public void show(){
     fill(myColor);
     ellipse(positionX,positionY, 2, 2);
   }
-  void hypostasis(){
+  public void hypostasis(){
     if(millis()-time>2000){
     positionX = (float)(Math.random()*500);
     positionY = (float)(Math.random()*500);
