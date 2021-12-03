@@ -4,8 +4,8 @@ class Star{
   private int myColor;
   private float time;
   public Star(){
-    positionX = (float)(Math.random()*500);
-    positionY = (float)(Math.random()*500);
+    positionX = (float)(Math.random()*1001);
+    positionY = (float)(Math.random()*1001);
     mySize = 2;
     myColor = (int)(Math.random()*255);
     time = 0;
