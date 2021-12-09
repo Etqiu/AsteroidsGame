@@ -38,7 +38,7 @@ class Thruster extends Spaceship {
   public void show ()  //Draws the floater at the current position  
   {             
     fill(myColorX, myColorY, myColorZ);   
-    stroke(0);    
+    noStroke();    
 
     //translate the (x,y) center of the ship to the correct position
     translate((float)myCenterX, (float)myCenterY);
@@ -66,13 +66,13 @@ class Thruster extends Spaceship {
     myColorY = 0;
     myColorZ = 0;
   }
-     public void setColorX(int n){
-        myColorX = n;
-      }
-       public void setColorY(int n){
-        myColorY = n;
-       }
-          public void setColorZ(int n){
-        myColorZ = n;
-          }
+  public void setColorX(int n) {
+    myColorX = n;
+  }
+  public void setColorY(int n) {
+    myColorY = n;
+  }
+  public void setColorZ(int n) {
+    myColorZ = n;
+  }
 }
