@@ -62,12 +62,10 @@ public void draw()
     blinky[i].show();
   }
   for (int i = 0; i<spacey.length; i++) {
-     thrusty[i].move();
-       thrusty[i].show();
     spacey[i].move();
+thrusty[i].move();
     spacey[i].show();
     spacey[i].maxspeed();
-    
     thrusty[i].maxspeed();
   }
   for (int i = 0; i<rocky.size(); i++) {
@@ -84,15 +82,11 @@ public void draw()
        thrusty[i].setColorX((int)(Math.random()*30));
        thrusty[i].setColorY(((int)(Math.random()*100)+100));
        thrusty[i].setColorZ(((int)(Math.random()*100)+100));
-        spacey[i].accelerate(.05);
-        thrusty[i].accelerate(.05);
+       spacey[i].accelerate(.05);
+       thrusty[i].accelerate(.05);
+       thrusty[i].show();
       }
-     
-      else{
-         thrusty[i].setColorX(0);
-       thrusty[i].setColorY(0);
-       thrusty[i].setColorZ(0);
-      }
+      
       if (dPress) {
         spacey[i].turn(5);
         thrusty[i].turn(5);
@@ -221,4 +215,3 @@ public void keyReleased() {
   if (key == 'd' || key == 'D')
     dPress = false;
 }
-
