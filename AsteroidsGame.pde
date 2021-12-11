@@ -4,14 +4,20 @@ Thruster [] thrusty = new Thruster[6];
 ArrayList <Asteroid> rocky = new ArrayList <Asteroid>();
 boolean wPress, aPress, dPress;
 float center, center2;
-float time;
+float time, time2;
+int health;
+int lengths = 20;
+float opacity = 0;
+
 
 public void setup()
 {
+  
   wPress = false;
   aPress = false;
   dPress = false;
   time =0;
+  health = 6;
   noStroke();
   size(1000, 1000);
   for (int i = 0; i<thrusty.length; i++) {
@@ -61,30 +67,34 @@ public void draw()
   for (int i = 0; i<blinky.length; i++) {
     blinky[i].show();
   }
-  for (int i = 0; i<spacey.length; i++) {
-    spacey[i].move();
-thrusty[i].move();
-    spacey[i].show();
-    spacey[i].maxspeed();
-    thrusty[i].maxspeed();
-  }
+  for (int i = 0; i<spacey.length; i++) 
+    if(spacey[i] != null) {
+      spacey[i].move();
+      thrusty[i].move();
+      spacey[i].show();
+      spacey[i].maxspeed();
+      thrusty[i].maxspeed();
+    }
   for (int i = 0; i<rocky.size(); i++) {
     rocky.get(i).show();
     rocky.get(i).move();
   }
   if (keyPressed) {
-    for (int i = 0; i<spacey.length; i++) {
+    for (int i = 0; i<spacey.length; i++) 
+    if(spacey[i] != null) {
       if (aPress) {
         spacey[i].turn(-5);
         thrusty[i].turn(-5);
       }
       if (wPress) {
+       
        thrusty[i].setColorX((int)(Math.random()*30));
        thrusty[i].setColorY(((int)(Math.random()*100)+100));
        thrusty[i].setColorZ(((int)(Math.random()*100)+100));
        spacey[i].accelerate(.05);
        thrusty[i].accelerate(.05);
        thrusty[i].show();
+  
       }
       
       if (dPress) {
@@ -138,31 +148,32 @@ thrusty[i].move();
       }
     }
   }
-  for (int i = 0; i<spacey.length; i++) {
-    for (int j = 0; j<blinky.length; j++) {
-      for (int k = 0; k<rocky.size(); k++) {
-        if (spacey[i].getCenterX()>width-1) {
-          blinky[j].hypostasis2();
-          rocky.get(k).hyperspace2();
-        } else if (spacey[i].getCenterX()<1)
-        {    
-          blinky[j].hypostasis2();
-          rocky.get(k).hyperspace2();
-        }    
-        if (spacey[i].getCenterY() >height-1)
-        {    
-
-          blinky[j].hypostasis2();
-          rocky.get(k).hyperspace2();
-        } else if (spacey[i].getCenterY()< 1)
-        {  
-          blinky[j].hypostasis2();
-          rocky.get(k).hyperspace2();
-          
+  for (int i = 0; i<spacey.length; i++) 
+    if(spacey[i] != null) {
+      for (int j = 0; j<blinky.length; j++) {
+        for (int k = 0; k<rocky.size(); k++) {
+          if (spacey[i].getCenterX()>width-1) {
+            blinky[j].hypostasis2();
+            rocky.get(k).hyperspace2();
+          } else if (spacey[i].getCenterX()<1)
+          {    
+            blinky[j].hypostasis2();
+            rocky.get(k).hyperspace2();
+          }    
+          if (spacey[i].getCenterY() >height-1)
+          {    
+  
+            blinky[j].hypostasis2();
+            rocky.get(k).hyperspace2();
+          } else if (spacey[i].getCenterY()< 1)
+          {  
+            blinky[j].hypostasis2();
+            rocky.get(k).hyperspace2();
+            
+          }
         }
       }
     }
-  }
 
 
 
@@ -187,14 +198,26 @@ thrusty[i].move();
   // }
   // }
   for (int i = 0; i<rocky.size(); i++) {
-    for (int k = 0; k<spacey.length; k++) {
+    for (int k = 0; k<spacey.length; k++)
+    if(spacey[k] != null) { 
+      
       if (dist((float)rocky.get(i).myCenterX, (float)rocky.get(i).myCenterY, (float)spacey[k].myCenterX, (float)spacey[k].myCenterY) <=15) {
         rocky.set(i, new Asteroid());
         rocky.get(i).setCenterX(Math.random()*1000);
         rocky.get(i).setCenterX(Math.random()*-500);
+        spacey[k] = null;
+        health--;
+        
       }
     }
   }
+ if(health ==0){
+  noLoop();
+      background(0);
+       fill(255);
+         text("GAME OVER", 445, 500, 500);
+      text("Time of Flight: " +millis()/1000+ " seconds", 410,50,500);
+    }
 }
 
 public void keyPressed() {
