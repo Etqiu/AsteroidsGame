@@ -8,7 +8,7 @@ float time, time2;
 int health;
 int lengths = 20;
 float opacity = 0;
-
+boolean death = false;
 
 public void setup()
 {
@@ -80,7 +80,7 @@ public void draw()
     rocky.get(i).move();
   }
   if (keyPressed) {
-    for (int i = 0; i<spacey.length; i++) 
+    for (int i = 0; i<spacey.length; i++) {
     if(spacey[i] != null) {
       if (aPress) {
         spacey[i].turn(-5);
@@ -103,9 +103,10 @@ public void draw()
       }
 
 
-      if (key == 'h'|| key == 'H' ) {
-        if (millis()-time>2000) {
-
+      if (key == 'h'|| key == 'H' ) 
+      {
+        if(spacey[0]!=null&&spacey[1]!=null&&spacey[2]!=null&&spacey[3]!=null&&spacey[4]!=null&&spacey[5]!=null){
+           if (millis()-time>2000) {
           spacey[0].setCenterX(center);
           spacey[0].setCenterY(center2);
           spacey[1].setCenterX(center);
@@ -142,12 +143,23 @@ public void draw()
           thrusty[3].hyperspace();
           thrusty[4].hyperspace();
           thrusty[5].hyperspace();
-
           time = millis();
+           }
+        }
+        else{
+          fill(255);
+        
+          text("not enough fuel!!!!",100,100,500);
+          death = true;
+          
+          
+          
+        }
         }
       }
     }
   }
+  
   for (int i = 0; i<spacey.length; i++) 
     if(spacey[i] != null) {
       for (int j = 0; j<blinky.length; j++) {
@@ -179,14 +191,16 @@ public void draw()
 
 
   if (keyPressed) {
-    if (key == 'h'|| key == 'H') {
+    if (key == 'h'|| key == 'H') 
+    if(death == false){
       for (int k = 0; k<blinky.length; k++) {
         blinky[k].hypostasis();
       }
     }
   }
   if (keyPressed) {
-    if (key == 'h'|| key == 'H') {
+    if (key == 'h'|| key == 'H') 
+    if(death == false){
       for (int k = 0; k<rocky.size(); k++) {
         rocky.get(k).hyperspace();
       }
