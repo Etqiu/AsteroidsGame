@@ -105,60 +105,65 @@ public void draw()
 
       if (key == 'h'|| key == 'H' ) 
       {
-        if(spacey[0]!=null&&spacey[1]!=null&&spacey[2]!=null&&spacey[3]!=null&&spacey[4]!=null&&spacey[5]!=null){
-           if (millis()-time>2000) {
+         if (millis()-time>2000) {
+        if(spacey[0]!=null){
+          
           spacey[0].setCenterX(center);
           spacey[0].setCenterY(center2);
-          spacey[1].setCenterX(center);
-          spacey[1].setCenterY(center2-50);
-          spacey[2].setCenterX(center);
-          spacey[2].setCenterY(center2+50);
-          spacey[3].setCenterX(center-50);
-          spacey[3].setCenterY(center2-25);
-          spacey[4].setCenterX(center-50);
-          spacey[4].setCenterY(center2+25);
-          spacey[5].setCenterX(center-100);
-          spacey[5].setCenterY(center2);
           spacey[0].hyperspace();
-          spacey[1].hyperspace();
-          spacey[2].hyperspace();
-          spacey[3].hyperspace();
-          spacey[4].hyperspace();
-          spacey[5].hyperspace();
           thrusty[0].setCenterX(center);
           thrusty[0].setCenterY(center2);
-          thrusty[1].setCenterX(center);
+          thrusty[0].hyperspace();
+           }
+        if(spacey[1]!=null){
+          spacey[1].setCenterX(center);
+          spacey[1].setCenterY(center2-50);
+           spacey[1].hyperspace();
+            thrusty[1].setCenterX(center);
           thrusty[1].setCenterY(center2-50);
-          thrusty[2].setCenterX(center);
+          thrusty[1].hyperspace();
+        }
+        if(spacey[2]!=null){
+          spacey[2].setCenterX(center);
+          spacey[2].setCenterY(center2+50);
+          spacey[2].hyperspace();
+            thrusty[2].setCenterX(center);
+             thrusty[2].hyperspace();
           thrusty[2].setCenterY(center2+50);
-          thrusty[3].setCenterX(center-50);
+        }
+        if(spacey[3]!=null){
+          spacey[3].setCenterX(center-50);
+          spacey[3].setCenterY(center2-25);
+           spacey[3].hyperspace();
+            thrusty[3].setCenterX(center-50);
           thrusty[3].setCenterY(center2-25);
-          thrusty[4].setCenterX(center-50);
+              thrusty[3].hyperspace();
+        }
+        if(spacey[4]!=null){
+          spacey[4].setCenterX(center-50);
+      spacey[4].hyperspace();
+       thrusty[4].setCenterX(center-50);
           thrusty[4].setCenterY(center2+25);
+          spacey[4].setCenterY(center2+25);
+          thrusty[4].hyperspace();
+        }
+        if(spacey[5]!=null){
+          spacey[5].setCenterX(center-100);
+          spacey[5].setCenterY(center2);
+          spacey[5].hyperspace();
           thrusty[5].setCenterX(center-100);
           thrusty[5].setCenterY(center2);
-          thrusty[0].hyperspace();
-          thrusty[1].hyperspace();
-          thrusty[2].hyperspace();
-          thrusty[3].hyperspace();
-          thrusty[4].hyperspace();
           thrusty[5].hyperspace();
+        }
           time = millis();
            }
+    }
         }
-        else{
-          fill(255);
-        
-          text("not enough fuel!!!!",100,100,500);
-          death = true;
-          
-          
-          
-        }
+       
         }
       }
-    }
-  }
+    
+  
   
   for (int i = 0; i<spacey.length; i++) 
     if(spacey[i] != null) {
@@ -186,24 +191,19 @@ public void draw()
         }
       }
     }
-
-
-
-
   if (keyPressed) {
     if (key == 'h'|| key == 'H') 
-    if(death == false){
+    
       for (int k = 0; k<blinky.length; k++) {
         blinky[k].hypostasis();
-      }
     }
   }
   if (keyPressed) {
     if (key == 'h'|| key == 'H') 
-    if(death == false){
+  
       for (int k = 0; k<rocky.size(); k++) {
         rocky.get(k).hyperspace();
-      }
+
     }
   }
   //if (keyPressed ==false) {
