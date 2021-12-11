@@ -2,6 +2,7 @@ class Thruster extends Spaceship {
   private int myColorX;
   private int myColorY;
   private int myColorZ;
+  float thrusterOpacity;
   public Thruster() {
     myColorX = 0;
     myColorY = 0;
@@ -34,10 +35,12 @@ class Thruster extends Spaceship {
     myXspeed =0;
     myYspeed =0;
     myPointDirection =0;
+    thrusterOpacity =0;
   }
   public void show ()  //Draws the floater at the current position  
-  {             
-    fill(myColorX, myColorY, myColorZ);   
+  {   
+   
+    fill(myColorX, myColorY, myColorZ,thrusterOpacity);   
     noStroke();    
 
     //translate the (x,y) center of the ship to the correct position
@@ -74,5 +77,25 @@ class Thruster extends Spaceship {
   }
   public void setColorZ(int n) {
     myColorZ = n;
+  }
+   public void maxspeed() {
+    if (myXspeed >=3) {
+      myXspeed=3;
+    }
+    if(myYspeed>=3){
+      myYspeed=3;
+    }
+    if (wPress) {
+      if (thrusterOpacity < 160)
+        thrusterOpacity+=13;
+      else
+        thrusterOpacity = 160;
+    }
+    else {
+      if (thrusterOpacity > 0)
+        thrusterOpacity-=7.5;
+      else
+        thrusterOpacity = 0;
+    }
   }
 }
