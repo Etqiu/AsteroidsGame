@@ -94,6 +94,8 @@ class Asteroid extends Floater{
     rotate(-1*dRadians);
     translate(-1*(float)myCenterX, -1*(float)myCenterY);
   } 
-   
+   public void explosion(){
+     
+   }
   
 }
