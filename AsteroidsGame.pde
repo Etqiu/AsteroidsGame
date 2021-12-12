@@ -9,10 +9,10 @@ int health;
 int lengths = 20;
 float opacity = 0;
 boolean death = false;
-
+boolean timeTaken = false;
 public void setup()
 {
-  
+
   wPress = false;
   aPress = false;
   dPress = false;
@@ -23,7 +23,7 @@ public void setup()
   for (int i = 0; i<thrusty.length; i++) {
     thrusty[i] = new Thruster();
   }
-  for (int i = 0; i<25; i++) {
+  for (int i = 0; i<30; i++) {
     rocky.add(new Asteroid());
   }
   for (int i = 0; i<blinky.length; i++) {
@@ -68,7 +68,7 @@ public void draw()
     blinky[i].show();
   }
   for (int i = 0; i<spacey.length; i++) 
-    if(spacey[i] != null) {
+    if (spacey[i] != null) {
       spacey[i].move();
       thrusty[i].move();
       spacey[i].show();
@@ -81,92 +81,90 @@ public void draw()
   }
   if (keyPressed) {
     for (int i = 0; i<spacey.length; i++) {
-    if(spacey[i] != null) {
-      if (aPress) {
-        spacey[i].turn(-5);
-        thrusty[i].turn(-5);
-      }
-      if (wPress) {
-       
-       thrusty[i].setColorX((int)(Math.random()*30));
-       thrusty[i].setColorY(((int)(Math.random()*100)+100));
-       thrusty[i].setColorZ(((int)(Math.random()*100)+100));
-       spacey[i].accelerate(.05);
-       thrusty[i].accelerate(.05);
-       thrusty[i].show();
-  
-      }
-      
-      if (dPress) {
-        spacey[i].turn(5);
-        thrusty[i].turn(5);
-      }
+      if (spacey[i] != null) {
+        if (aPress) {
+          spacey[i].turn(-5);
+          thrusty[i].turn(-5);
+        }
+        if (wPress) {
+
+          thrusty[i].setColorX((int)(Math.random()*30));
+          thrusty[i].setColorY(((int)(Math.random()*100)+100));
+          thrusty[i].setColorZ(((int)(Math.random()*100)+100));
+          spacey[i].accelerate(.05);
+          thrusty[i].accelerate(.05);
+          thrusty[i].show();
+        }
+
+        if (dPress) {
+          spacey[i].turn(5);
+          thrusty[i].turn(5);
+        }
 
 
-      if (key == 'h'|| key == 'H' ) 
-      {
-         if (millis()-time>2000) {
-        if(spacey[0]!=null){
-          
-          spacey[0].setCenterX(center);
-          spacey[0].setCenterY(center2);
-          spacey[0].hyperspace();
-          thrusty[0].setCenterX(center);
-          thrusty[0].setCenterY(center2);
-          thrusty[0].hyperspace();
-           }
-        if(spacey[1]!=null){
-          spacey[1].setCenterX(center);
-          spacey[1].setCenterY(center2-50);
-           spacey[1].hyperspace();
-            thrusty[1].setCenterX(center);
-          thrusty[1].setCenterY(center2-50);
-          thrusty[1].hyperspace();
-        }
-        if(spacey[2]!=null){
-          spacey[2].setCenterX(center);
-          spacey[2].setCenterY(center2+50);
-          spacey[2].hyperspace();
-            thrusty[2].setCenterX(center);
-             thrusty[2].hyperspace();
-          thrusty[2].setCenterY(center2+50);
-        }
-        if(spacey[3]!=null){
-          spacey[3].setCenterX(center-50);
-          spacey[3].setCenterY(center2-25);
-           spacey[3].hyperspace();
-            thrusty[3].setCenterX(center-50);
-          thrusty[3].setCenterY(center2-25);
+        if (key == 'h'|| key == 'H' ) 
+        {
+          if (millis()-time>2000) {
+            if (spacey[0]!=null) {
+
+              spacey[0].setCenterX(center);
+              spacey[0].setCenterY(center2);
+              spacey[0].hyperspace();
+              thrusty[0].setCenterX(center);
+              thrusty[0].setCenterY(center2);
+              thrusty[0].hyperspace();
+            }
+            if (spacey[1]!=null) {
+              spacey[1].setCenterX(center);
+              spacey[1].setCenterY(center2-50);
+              spacey[1].hyperspace();
+              thrusty[1].setCenterX(center);
+              thrusty[1].setCenterY(center2-50);
+              thrusty[1].hyperspace();
+            }
+            if (spacey[2]!=null) {
+              spacey[2].setCenterX(center);
+              spacey[2].setCenterY(center2+50);
+              spacey[2].hyperspace();
+              thrusty[2].setCenterX(center);
+              thrusty[2].hyperspace();
+              thrusty[2].setCenterY(center2+50);
+            }
+            if (spacey[3]!=null) {
+              spacey[3].setCenterX(center-50);
+              spacey[3].setCenterY(center2-25);
+              spacey[3].hyperspace();
+              thrusty[3].setCenterX(center-50);
+              thrusty[3].setCenterY(center2-25);
               thrusty[3].hyperspace();
-        }
-        if(spacey[4]!=null){
-          spacey[4].setCenterX(center-50);
-      spacey[4].hyperspace();
-       thrusty[4].setCenterX(center-50);
-          thrusty[4].setCenterY(center2+25);
-          spacey[4].setCenterY(center2+25);
-          thrusty[4].hyperspace();
-        }
-        if(spacey[5]!=null){
-          spacey[5].setCenterX(center-100);
-          spacey[5].setCenterY(center2);
-          spacey[5].hyperspace();
-          thrusty[5].setCenterX(center-100);
-          thrusty[5].setCenterY(center2);
-          thrusty[5].hyperspace();
-        }
-          time = millis();
-           }
-    }
-        }
-       
+            }
+            if (spacey[4]!=null) {
+              spacey[4].setCenterX(center-50);
+              spacey[4].hyperspace();
+              thrusty[4].setCenterX(center-50);
+              thrusty[4].setCenterY(center2+25);
+              spacey[4].setCenterY(center2+25);
+              thrusty[4].hyperspace();
+            }
+            if (spacey[5]!=null) {
+              spacey[5].setCenterX(center-100);
+              spacey[5].setCenterY(center2);
+              spacey[5].hyperspace();
+              thrusty[5].setCenterX(center-100);
+              thrusty[5].setCenterY(center2);
+              thrusty[5].hyperspace();
+            }
+            time = millis();
+          }
         }
       }
-    
-  
-  
+    }
+  }
+
+
+
   for (int i = 0; i<spacey.length; i++) 
-    if(spacey[i] != null) {
+    if (spacey[i] != null) {
       for (int j = 0; j<blinky.length; j++) {
         for (int k = 0; k<rocky.size(); k++) {
           if (spacey[i].getCenterX()>width-1) {
@@ -179,32 +177,30 @@ public void draw()
           }    
           if (spacey[i].getCenterY() >height-1)
           {    
-  
+
             blinky[j].hypostasis2();
             rocky.get(k).hyperspace2();
           } else if (spacey[i].getCenterY()< 1)
           {  
             blinky[j].hypostasis2();
             rocky.get(k).hyperspace2();
-            
           }
         }
       }
     }
   if (keyPressed) {
     if (key == 'h'|| key == 'H') 
-    
+
       for (int k = 0; k<blinky.length; k++) {
         blinky[k].hypostasis();
-    }
+      }
   }
   if (keyPressed) {
     if (key == 'h'|| key == 'H') 
-  
+
       for (int k = 0; k<rocky.size(); k++) {
         rocky.get(k).hyperspace();
-
-    }
+      }
   }
   //if (keyPressed ==false) {
   //for (int i = 0; i<spacey.length; i++) {
@@ -213,25 +209,49 @@ public void draw()
   // }
   for (int i = 0; i<rocky.size(); i++) {
     for (int k = 0; k<spacey.length; k++)
-    if(spacey[k] != null) { 
-      
-      if (dist((float)rocky.get(i).myCenterX, (float)rocky.get(i).myCenterY, (float)spacey[k].myCenterX, (float)spacey[k].myCenterY) <=15) {
-        rocky.set(i, new Asteroid());
-        rocky.get(i).setCenterX(Math.random()*1000);
-        rocky.get(i).setCenterX(Math.random()*-500);
-        spacey[k] = null;
-        health--;
-        
+      if (spacey[k] != null) { 
+
+        if (dist((float)rocky.get(i).myCenterX, (float)rocky.get(i).myCenterY, (float)spacey[k].myCenterX, (float)spacey[k].myCenterY) <=15) {
+          rocky.set(i, new Asteroid());
+          rocky.get(i).setCenterX(Math.random()*1000);
+          rocky.get(i).setCenterX(Math.random()*-500);
+          spacey[k] = null;
+          health--;
+        }
       }
+      
+  }
+  if (health ==0) {
+    if(timeTaken == false){
+    time2=millis()/1000;
+    timeTaken = true;
+    }
+    background(0);
+     fill(19, 170, 240);
+       rect(439,554,173,40,5);
+       fill(255);
+         textSize(26);
+      text("GAME OVER", 451, 497, 494);
+      text("Time of Flight: " +millis()/1000+ " seconds", 361,392,57);
+      text("Your Spaceships are destroyed!",331, 275, 500);
+        textSize(17);
+      text("Press here to Restart",440,579);
+      
+    
+    noLoop();
+    while(rocky.size() != 0){
+      rocky.remove(0);
+    }
+}
+}
+public void mousePressed(){
+  if (health ==0) {
+    if(mouseX >=439 && mouseY >=554 && mouseX<=612 && mouseY <= 594){
+   
+   loop();
+    setup();
     }
   }
- if(health ==0){
-  noLoop();
-      background(0);
-       fill(255);
-         text("GAME OVER", 445, 500, 500);
-      text("Time of Flight: " +millis()/1000+ " seconds", 410,50,500);
-    }
 }
 
 public void keyPressed() {
@@ -246,7 +266,7 @@ public void keyPressed() {
 public void keyReleased() {
   if (key == 'w' || key == 'W')
     wPress = false;
- 
+
   if (key == 'a' || key == 'A')
     aPress = false;
   if (key == 'd' || key == 'D')
