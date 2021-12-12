@@ -13,7 +13,7 @@ boolean timeTaken = false;
 public void setup()
 {
  timeTaken = false;
-  startTime = (float)millis()/1000;
+  startTime = millis()/1000;
   wPress = false;
   aPress = false;
   dPress = false;
@@ -224,7 +224,7 @@ public void draw()
   }
   if (health ==0) {
    if(timeTaken == false){
-    timer = (float)(millis()/1000)-startTime;
+    timer = (millis()/1000)-startTime;
     timeTaken = true;
     }
     background(0);
