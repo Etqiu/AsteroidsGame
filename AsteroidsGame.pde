@@ -4,16 +4,16 @@ Thruster [] thrusty = new Thruster[6];
 ArrayList <Asteroid> rocky = new ArrayList <Asteroid>();
 boolean wPress, aPress, dPress;
 float center, center2;
-float time, time2, timer, startTime;
+float time, time2, startTime, timer;
 int health;
 int lengths = 20;
 float opacity = 0;
 boolean death = false;
-boolean timeTaken = false;
+boolean timeTaken;
 public void setup()
 {
- timeTaken = false;
-  startTime = millis()/1000;
+  timeTaken = false;
+  startTime = (float)millis()/1000;
   wPress = false;
   aPress = false;
   dPress = false;
@@ -24,7 +24,7 @@ public void setup()
   for (int i = 0; i<thrusty.length; i++) {
     thrusty[i] = new Thruster();
   }
-  for (int i = 0; i<30; i++) {
+  for (int i = 0; i<25; i++) {
     rocky.add(new Asteroid());
   }
   for (int i = 0; i<blinky.length; i++) {
@@ -219,14 +219,21 @@ public void draw()
           spacey[k] = null;
           health--;
         }
-      }
-      
+      }    
   }
   if (health ==0) {
-   if(timeTaken == false){
-    timer = (millis()/1000)-startTime;
+    if(timeTaken == false){
+    timer = (float)(millis()/1000)-startTime;
     timeTaken = true;
     }
+   
+     if(mouseX >=439 && mouseY >=554 && mouseX<=612 && mouseY <= 594){
+       strokeWeight(2);
+    stroke(255);
+     }
+     else{
+       stroke(0);
+     }
     background(0);
      fill(19, 170, 240);
        rect(439,554,173,40,5);
@@ -237,9 +244,6 @@ public void draw()
       text("Your Spaceships are destroyed!",331, 275, 500);
         textSize(17);
       text("Press here to Restart",440,579);
-      
-    
-    noLoop();
     while(rocky.size() != 0){
       rocky.remove(0);
     }
@@ -247,8 +251,8 @@ public void draw()
 }
 public void mousePressed(){
   if (health ==0) {
+    strokeWeight(1);
     if(mouseX >=439 && mouseY >=554 && mouseX<=612 && mouseY <= 594){
-   
    loop();
     setup();
     }
