@@ -4,7 +4,7 @@ Thruster [] thrusty = new Thruster[6];
 ArrayList <Asteroid> rocky = new ArrayList <Asteroid>();
 boolean wPress, aPress, dPress;
 float center, center2;
-float time, time2;
+float time, time2, timer, startTime;
 int health;
 int lengths = 20;
 float opacity = 0;
@@ -12,7 +12,8 @@ boolean death = false;
 boolean timeTaken = false;
 public void setup()
 {
-
+ timeTaken = false;
+  startTime = (float)millis()/1000;
   wPress = false;
   aPress = false;
   dPress = false;
@@ -222,17 +223,17 @@ public void draw()
       
   }
   if (health ==0) {
-    if(timeTaken == false){
-    time2=millis()/1000;
+   if(timeTaken == false){
+    timer = (float)(millis()/1000)-startTime;
     timeTaken = true;
     }
     background(0);
      fill(19, 170, 240);
-        rect(422,543,208,71,5);
+       rect(439,554,173,40,5);
        fill(255);
          textSize(26);
       text("GAME OVER", 451, 497, 494);
-      text("Time of Flight: " +millis()/1000+ " seconds", 361,392,57);
+      text("Time of Flight: " +timer+ " seconds", 361,392,57);
       text("Your Spaceships are destroyed!",331, 275, 500);
         textSize(17);
       text("Press here to Restart",440,579);
