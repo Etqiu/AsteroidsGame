@@ -228,7 +228,7 @@ public void draw()
     }
     background(0);
      fill(19, 170, 240);
-       rect(439,554,173,40,5);
+        rect(422,543,208,71,5);
        fill(255);
          textSize(26);
       text("GAME OVER", 451, 497, 494);
